@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { BG_URL } from "../utils/constants";
+import { BG_URL, USER_AVATAR } from "../utils/constants";
 import { validateFormData } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import {
@@ -7,17 +7,15 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
+
 const Login = () => {
   const [signUpForm, setSignUpForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
-  const dispatch= useDispatch();
-
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -29,7 +27,6 @@ const Login = () => {
     );
     if (errorMessage === null) {
       if (signUpForm) {
-        console.log("SIGNUP USER");
         createUserWithEmailAndPassword(
           auth,
           email.current.value,
@@ -39,10 +36,10 @@ const Login = () => {
             // const user = userCredential.user;
             updateProfile(auth.currentUser, {
               displayName: username.current.value,
-              photoURL: "https://avatars.githubusercontent.com/u/89632032?v=4",
+              photoURL: USER_AVATAR,
             })
               .then(() => {
-        const { uid, email, displayName, photoURL } = auth.currentUser;
+                const { uid, email, displayName, photoURL } = auth.currentUser;
 
                 dispatch(
                   addUser({
@@ -52,7 +49,6 @@ const Login = () => {
                     photoURL: photoURL,
                   })
                 );
-                navigate("/browse");
               })
               .catch((error) => {
                 setErrorMessage(error.message);
@@ -77,7 +73,6 @@ const Login = () => {
         )
           .then((userCredential) => {
             const user = userCredential.user;
-            navigate("/browse");
             // ...
           })
           .catch((error) => {
