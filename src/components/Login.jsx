@@ -87,13 +87,13 @@ const Login = () => {
   return (
     <div className="login-component ">
       <Header />
-      <img src={BG_URL} alt="" />
-      <div className=" w-4/12 absolute mx-auto  mt-24 h-full right-0 bottom-0 left-0 top-0 bg-black bg-opacity-80 text-white">
+      <img className="md:h-full h-screen object-cover" src={BG_URL} alt="" />
+      <div className=" w-full md:w-4/12 absolute mx-auto  mt-24 h-full right-0 bottom-0 left-0 top-0 bg-black bg-opacity-80 text-white">
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="p-14"
+          className="p-14 "
           action=""
         >
           <h1 className="text-3xl font-bold mb-6 ">

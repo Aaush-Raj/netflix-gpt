@@ -12,7 +12,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmY1OGMzYTExYjg5NTZjZThkMGJiNmU4YjcxNDE3ZCIsInN1YiI6IjY1ZDg2NzA1ZDRkNTA5MDE0ODY0N2FlYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.k1nY4k2U8zWx7i7KAhSzwZXfcQ_ZMtYxpndiYn9COIc",
+      "Bearer "+ process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -23,3 +23,14 @@ export const GET_TOP_RATED_MOVIES_URL ="https://api.themoviedb.org/3/movie/top_r
 export const GET_UPCOMING_MOVIES_URL ='https://api.themoviedb.org/3/movie/upcoming'; 
 export const GET_MOVIE_DETAILS_URL ="https://api.themoviedb.org/3/movie/"; 
 export const POSTER_URL="https://image.tmdb.org/t/p/w500/"; 
+
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
+
+
+export const FIND_MOVIE_URL = "https://api.themoviedb.org/3/search/movie?query="
+// "&include_adult=false&language=en-US&page=1'"
